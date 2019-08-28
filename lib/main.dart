@@ -91,18 +91,11 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              'TIMES',
-            ),
-            Text(
-              'Bah',
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: 'username do github'
+              ),
             ),
           ],
         ),
@@ -110,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.fingerprint),
+        child: Icon(Icons.navigate_next),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
