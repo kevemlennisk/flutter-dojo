@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/' : (context) => MyHomePage(),
-        RepositoriesPage.kRouteName : (context) => RepositoriesPage()
+        '/': (context) => MyHomePage(),
+        RepositoriesPage.kRouteName: (context) => RepositoriesPage(),
       },
     );
   }
@@ -39,11 +39,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   String _userName;
 
   void _goToUserRepositoryPage() {
-      Navigator.pushNamed(context, RepositoriesPage.kRouteName);
+    Navigator.pushNamed(context, RepositoriesPage.kRouteName, arguments: _userName);
   }
 
   @override
@@ -81,12 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(
-                labelText: 'Username do github'
-              ),
+              decoration: InputDecoration(labelText: 'Username do github'),
               onChanged: (text) {
                 _userName = text;
-                print(text);
               },
             ),
           ],
@@ -102,20 +98,25 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class RepositoriesPage extends StatelessWidget {
-
   static const kRouteName = '/repositories';
   static const kPageName = 'Respositories';
 
   @override
   Widget build(BuildContext context) {
+  final String userName = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(kPageName)
-      ),
-      body: Center(
-        child: Text("")
-      )
-    );
+        appBar: AppBar(title: Text(kPageName)),
+        body: Center(
+            child: Column(
+          children: <Widget>[
+            SizedBox(height: 20),
+            ClipOval(
+              child: Image.network(
+                  'https://avatars.githubusercontent.com/$userName', height: 130, width: 130,),
+            ),
+            SizedBox(height: 10),
+            Text(userName)
+          ],
+        )));
   }
-  
 }
