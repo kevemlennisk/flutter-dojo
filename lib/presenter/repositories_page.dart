@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'model/repository_model.dart';
 import 'repository_details_page.dart';
 
 class RepositoriesPage extends StatelessWidget {
@@ -36,7 +37,7 @@ class RepositoriesPage extends StatelessWidget {
                     itemCount: _repositories.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                          title: Text('${_repositories[index]._name}'),
+                          title: Text('${_repositories[index].name}'),
                           onTap: _goToDetailsPage);
                     }))
           ],
@@ -59,12 +60,4 @@ class RepositoriesPage extends StatelessWidget {
     repositories.add(Repository('repository 5'));
     return repositories;
   }
-}
-
-class Repository {
-  String _name;
-
-  Repository(this._name);
-
-  String get name => _name;
 }
