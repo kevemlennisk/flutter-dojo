@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/home_page.dart';
-import 'package:my_app/repositories_page.dart';
-import 'package:my_app/repository_details.dart';
+
+import 'presenter/home_page.dart';
+import 'presenter/repositories_page.dart';
+import 'presenter/repository_details_page.dart';
 
 void main() => runApp(MyApp());
 

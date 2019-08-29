@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/repository_details.dart';
+
+import 'repository_details_page.dart';
 
 class RepositoriesPage extends StatelessWidget {
   static const kRouteName = '/repositories';
