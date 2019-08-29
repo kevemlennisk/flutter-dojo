@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text("Login"),
+        title: Text("Identification"),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(labelText: 'Username do github'),
+              decoration: InputDecoration(labelText: 'Github username'),
               onChanged: (text) {
                 _userName = text;
               },
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _goToUserRepositoryPage,
-        tooltip: 'Increment',
+        tooltip: 'Access',
         child: Icon(Icons.navigate_next),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
