@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/home_page.dart';
 import 'package:my_app/repositories_page.dart';
+import 'package:my_app/repository_details.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,21 +18,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         RepositoriesPage.kRouteName: (context) => RepositoriesPage(),
-        RepositoryDetail.kRouteName: (context) => RepositoryDetail(),
+        RepositoryDetailsPage.kRouteName: (context) => RepositoryDetailsPage(),
       },
-    );
-  }
-}
-
-class RepositoryDetail extends StatelessWidget {
-  static const kRouteName = '/repositoryDetail';
-  static const kPageName = 'Respository Detail';
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(kPageName)),
-      body: Text("Detail"),
     );
   }
 }

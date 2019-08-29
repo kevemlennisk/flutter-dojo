@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/main.dart';
+import 'package:my_app/repository_details.dart';
 
 class RepositoriesPage extends StatelessWidget {
   static const kRouteName = '/repositories';
@@ -10,7 +10,7 @@ class RepositoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void _goToDetailsPage() {
-      Navigator.pushNamed(context, RepositoryDetail.kRouteName);
+      Navigator.pushNamed(context, RepositoryDetailsPage.kRouteName);
     }
 
     final String userName = ModalRoute.of(context).settings.arguments;
