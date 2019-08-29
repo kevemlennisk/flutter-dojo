@@ -1,4 +1,4 @@
-# Flutter DOjp
+# Flutter Dojo
 
 A Flutter project built during an dojo
 
