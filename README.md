@@ -1,6 +1,6 @@
-# my_app
+# Flutter DOjp
 
-A new Flutter project.
+A Flutter project built during an dojo
 
 ## Getting Started
 
