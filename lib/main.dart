@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => MyHomePage(),
         RepositoriesPage.kRouteName: (context) => RepositoriesPage(),
+        RepositoryDetail.kRouteName: (context) => RepositoryDetail(),
       },
     );
   }
@@ -42,7 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
   String _userName;
 
   void _goToUserRepositoryPage() {
-    Navigator.pushNamed(context, RepositoriesPage.kRouteName, arguments: _userName);
+    Navigator.pushNamed(context, RepositoriesPage.kRouteName,
+        arguments: _userName);
   }
 
   @override
@@ -105,8 +107,12 @@ class RepositoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final String userName = ModalRoute.of(context).settings.arguments;
-  _repositories = mockedRepositories();
+    void _goToDetailsPage() {
+      Navigator.pushNamed(context, RepositoryDetail.kRouteName);
+    }
+
+    final String userName = ModalRoute.of(context).settings.arguments;
+    _repositories = mockedRepositories();
     return Scaffold(
         appBar: AppBar(title: Text(kPageName)),
         body: Center(
@@ -115,25 +121,27 @@ class RepositoriesPage extends StatelessWidget {
             SizedBox(height: 20),
             ClipOval(
               child: Image.network(
-                  'https://avatars.githubusercontent.com/$userName', height: 130, width: 130,),
+                'https://avatars.githubusercontent.com/$userName',
+                height: 130,
+                width: 130,
+              ),
             ),
             SizedBox(height: 10),
             Text(userName),
             Expanded(
-              child: ListView.builder(
-                  itemCount: _repositories.length,
-                  itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('${_repositories[index]._name}'),
-                  );
-              })
-            )
+                child: ListView.builder(
+                    itemCount: _repositories.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                          title: Text('${_repositories[index]._name}'),
+                          onTap: _goToDetailsPage);
+                    }))
           ],
         )));
   }
 
   List<Repository> mockedRepositories() {
-     List<Repository> repositories = List();
+    List<Repository> repositories = List();
     repositories.add(Repository('repository 1'));
     repositories.add(Repository('repository 2'));
     repositories.add(Repository('repository 3'));
@@ -151,11 +159,23 @@ class RepositoriesPage extends StatelessWidget {
 }
 
 class Repository {
-  
   String _name;
-  
+
   Repository(this._name);
 
   String get name => _name;
+}
+
+class RepositoryDetail extends StatelessWidget {
+  static const kRouteName = '/repositoryDetail';
+  static const kPageName = 'Respository Detail';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(kPageName)),
+      body: Text("Detail"),
+    );
+  }
 
 }
